@@ -5,7 +5,7 @@ const path = require('path');
 const {DATABASE_URL
 } = process.env
 
-const sequelize = new Sequelize(DATABASE_URL, {
+const sequelize = new Sequelize('postgres://default:rcxISM7mNdL5@ep-rough-mouse-34850317.us-east-1.postgres.vercel-storage.com:5432/verceldb', {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   dialectOptions:{
