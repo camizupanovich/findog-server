@@ -2,18 +2,12 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const {POSTGRES_URL
+const { POSTGRES_URL
 } = process.env
 
-const sequelize = new Sequelize(POSTGRES_URL, {
+const sequelize = new Sequelize(POSTGRES_URL + "?sslmode=require", {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-  dialectOptions:{
-    ssl:{
-      require: true,
-      rejectUnauthorized:false
-    }
-  },
 });
 const basename = path.basename(__filename);
 
@@ -35,11 +29,11 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Dog,Temperament } = sequelize.models;
+const { Dog, Temperament } = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-Dog.belongsToMany(Temperament,{through: 'Dog_Temperament'});
-Temperament.belongsToMany(Dog,{through: 'Dog_Temperament'});
+Dog.belongsToMany(Temperament, { through: 'Dog_Temperament' });
+Temperament.belongsToMany(Dog, { through: 'Dog_Temperament' });
 
 
 module.exports = {
