@@ -1,4 +1,3 @@
-const {API_KEY} = process.env; // traigo la api key que guarde en .env
 const URL =`https://api.thedogapi.com/v1/breeds`;
 const axios = require('axios');
 
@@ -19,12 +18,12 @@ const ApiDogs = async()=>{
           return{
             id: e.id,
             name: e.name,
-            image: e.image.url,
-            longevity: e.life_span,
-            temperament: e.temperament && e.temperament.split(',').map((t)=>t.trim()),
-            height: e.height.metric ,
-            weight:e.weight.metric,
-            bredfor: e.bred_for
+            image: e.image ?e.image.url :'null' ,
+            longevity: e.life_span?e.life_span:'null',
+            temperament: e.temperament? e.temperament.split(',').map((t)=>t.trim()) : 'null',
+            height: e.height ?e.height.metric :'null' ,
+            weight:e.weight? e.weight.metric: 'null',
+            bredfor: e.bred_for ?e.bred_for:'null'
           }
         });
         return promiseInfo;

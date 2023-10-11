@@ -31,7 +31,7 @@ route.get('/', async (req,res) =>{
         }
     }catch(error){
         console.log('error in get name and all dogs routes/GetDogs.js' , error)
-        return res.status(404).json(error)
+        return res.status(400).json(error)
     }
 });
 
