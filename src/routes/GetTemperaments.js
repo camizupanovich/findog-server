@@ -1,7 +1,7 @@
 const express = require('express');
 const {Temperament} =require('../db')
  // traigo la api key que guarde en .env
-const URL =`https://api.thedogapi.com/v1/breeds`;
+const URL ='https://api.thedogapi.com/v1/breeds?api_key=live_M4o91QRzEhehIz0d7uAfvek7XCfsUQYUh9Cow1c39BHgCkzxoZ5o3HnQfwSC2F9j';
 const axios = require('axios');
 const route = express.Router();
 
